@@ -4,26 +4,25 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * Genera el archivo de referencias (direcciones virtuales) que produciria
+ * Genera el archivo de referencias que produciria
  * la funcion cifrar() del Hill Modificado.
- *
+ 
  * Layout en memoria virtual:
  *   - Matriz m (bytes) en row-major desde la direccion 0:
  *       dir(m[i][j]) = i * NC + j
  *   - Vector v (bytes) justo despues de la matriz:
  *       dir(v[k]) = NF * NC + k
  *   - pagina = dir / TP ; desplazamiento = dir % TP
- *
+ 
  * Por cada operacion  m[i][j] = m[i][j] OP v[idx]  se generan 3 referencias:
  *   1. lectura de m[i][j]
  *   2. lectura de v[idx]
  *   3. escritura de m[i][j]
- *
+ 
  * Uso: java GeneradorReferencias filas columnas tamVector tamPagina pasadas archivoSalida
  * (si no se pasan argumentos, los pide por consola)
  */
 public class GeneradorDVS {
-
     public static void main(String[] args) throws IOException {
         int filas, columnas, tamVector, tamPagina, pasadas;
         String salida;
